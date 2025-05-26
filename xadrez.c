@@ -1,32 +1,93 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+//função recursiva usada para substituir loop simples
+void MovimentoTorre(int casa) {
 
-int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    if (casa > 0)
+    { 
+        printf("Direita\n");
+        MovimentoTorre(casa - 1);
+    }
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+}
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+void MovimentoRainha(int casa) {
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+    if (casa > 0)
+    { 
+        printf("Esquerda\n");
+        MovimentoRainha(casa - 1);
+    }
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
+}
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+//Recursiva usada para substituir Loop Aninhado
+void movimentobispo(int i){
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+    if (i > 0)
+    {
+        for(int i = 3; i > 0; i--){
+            for(int j = 1; j > 0; j--){
+                if (j = 1)
+                {
+                   printf("Direita\n");
+                }
+            }
+            if (i == 1)
+            {
+                continue;
+            }
+            printf("cima\n", i);
+        }
 
-    return 0;
+        movimentobispo(i - 1);
+    }
+    
+}
+
+
+int main(){
+
+int bispo = 1, torre=5, rainha=8, cavalo=3;
+
+
+//TORRE
+printf("A torre move-se Na vertical ou na Horizontal\n");
+MovimentoTorre(torre);
+
+//BISPO 
+printf("\n");
+
+    printf("O Bispo se move na diagonal\n");
+    movimentobispo(bispo);
+
+   
+   
+
+//Rainha 
+printf("\n");
+    printf("A Rainha se move em qualquer direção\n");
+    MovimentoRainha(rainha);
+
+
+
+//Cavalo cima e direita loop complexo
+printf("\n");
+
+    printf("o Cavalo move-se em L\n");
+    
+   for(int cima= 1; cima <= 3; cima++){
+    for( int direita=3; cima == 3 && direita <= 3; direita++){
+        printf("Direita\n");
+    }
+    if (cima == 3)
+        {
+            continue; //'continue' usado para pular o terceiro 'cima'
+        }
+    printf("Cima\n");
+   }
+
+
+
+return 0;
 }
