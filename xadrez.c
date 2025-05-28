@@ -21,30 +21,13 @@ void MovimentoRainha(int casa) {
 
 }
 
-//Recursiva usada para substituir Loop Aninhado
-void movimentobispo(int i){
+void MovimentoBispo(int casa){
 
-    if (i > 0)
-    {
-        for(int i = 3; i > 0; i--){
-            for(int j = 1; j > 0; j--){
-                if (j = 1)
-                {
-                   printf("Direita\n");
-                }
-            }
-            if (i == 1)
-            {
-                continue;
-            }
-            printf("cima\n", i);
-        }
-
-        movimentobispo(i - 1);
+    if(casa>0){
+        printf("Direita\n");
+        MovimentoBispo(casa - 1);
     }
-    
 }
-
 
 int main(){
 
@@ -59,25 +42,28 @@ MovimentoTorre(torre);
 printf("\n");
 
     printf("O Bispo se move na diagonal\n");
-    movimentobispo(bispo);
-
-   
-   
+    for(int i = 3; i > 0; i--){
+        MovimentoBispo(bispo);
+        if (i == 1)
+        {
+          break;
+        }
+        printf("Cima\n");
+       
+    }   
 
 //Rainha 
 printf("\n");
     printf("A Rainha se move em qualquer direção\n");
     MovimentoRainha(rainha);
 
-
-
 //Cavalo cima e direita loop complexo
 printf("\n");
 
     printf("o Cavalo move-se em L\n");
     
-   for(int cima= 1; cima <= 3; cima++){
-    for( int direita=3; cima == 3 && direita <= 3; direita++){
+   for(int cima= 1; cima <= 3; cima++){//loop externo
+    for( int direita=3; cima == 3 && direita <= 3; direita++){//loop interno
         printf("Direita\n");
     }
     if (cima == 3)
